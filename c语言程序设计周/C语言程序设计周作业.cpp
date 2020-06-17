@@ -3,7 +3,7 @@
 #include<string.h>
 #include<conio.h>
 #include<math.h>
-#define VSHIGH 1 //在你的电脑上把这里改成0
+//#define VSHIGH 1
 #define SIZE 100
 typedef struct
 {
