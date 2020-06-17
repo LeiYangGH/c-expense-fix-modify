@@ -29,7 +29,8 @@ void dayinshou()
 	money Tm;
 	char Da[40], next;
 	printf("请输入你要查询的文件名\n");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 	fp = fopen(Da, "rb");     /*只读方式打开二进制文件*/
 	if (fp == NULL)
 	{
@@ -57,7 +58,8 @@ void dayinzhi()
 	money Tm;
 	char Da[40] = "a.txt", next;
 	printf("请输入你要查询的文件名\n");
-	gets_s(Da, 40);
+	flush();
+	gets_s(Da, sizeof(Da));
 	fp = fopen(Da, "rb");     /*只读方式打开二进制文件*/
 	if (fp == NULL)
 	{
@@ -90,8 +92,8 @@ void chaxunzhi()    /*按编号查询家庭成员财务支信息记录*/
 	FILE* fp = NULL;
 	/*提示用户输入要查询的文件名*/
 	printf("\n 请输入存储数据的文件名，按回车键结束。\n");
-	//gets(Da);
-
+	flush();
+	gets_s(Da, sizeof(Da));
 	/*提示用户输入要查询的家庭成员编号*/
 begin:
 	result = 0; system("cls");
@@ -217,7 +219,8 @@ void xiugaizhi()     /*修改家庭成员收支信息记录*/
 	FILE* fp;   /*fp指针指向存储数据的文件名*/
 	/*输入要进行修改记录的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 
 begin:
 	fp = fopen(Da, "rb"); /*只读方式打开文件*/
@@ -366,7 +369,7 @@ void xiugaishou()     /*修改家庭成员收信息记录*/
 	char Name[20];
 	float in;
 	char intime[10];
-	float out;
+	float out=0;
 	char outtime[10];
 	float sum;
 	money Tm;      /*定义进行操作时的临时结构体变量*/
@@ -377,7 +380,8 @@ void xiugaishou()     /*修改家庭成员收信息记录*/
 	FILE* fp;   /*fp指针指向存储数据的文件名*/
 	/*输入要进行修改记录的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 
 begin:
 	fp = fopen(Da, "rb"); /*只读方式打开文件*/
@@ -529,7 +533,8 @@ void shanchushou()    /*删除家庭成员收信息记录*/
 	char Da[40], next;
 	FILE* fp;      /*fp指针指向存储数据的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 
 begin:
 	/*以二进制读的方式打开文件*/
@@ -665,7 +670,8 @@ void shanchuzhi()    /*删除家庭成员支信息记录*/
 	char Da[40], next;
 	FILE* fp;      /*fp指针指向存储数据的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 
 begin:
 	/*以二进制读的方式打开文件*/
@@ -887,7 +893,8 @@ void tianjiaszhi()     /*添加财务支信息记录*/
 	char Da[40], next;     /*存储财务收支信息的文件名*/
 	int count = 1;          /*计算可输入数据的最大范围*/
 	printf("\n 请输入要添加财务收支信息的文件名：");
-	//gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
 
 
 begin:count = 1;
