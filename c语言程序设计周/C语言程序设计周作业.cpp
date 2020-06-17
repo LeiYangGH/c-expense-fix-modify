@@ -16,13 +16,20 @@ typedef struct
 	float sum;          /*总计*/
 }money;
 //--------------------------------------------------------------
+
+void flush()
+{
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF); {
+	}
+}
 void dayinshou()
 {
 	FILE* fp;
 	money Tm;
 	char Da[40], next;
 	printf("请输入你要查询的文件名\n");
-	gets(Da);
+	//gets(Da);
 	fp = fopen(Da, "rb");     /*只读方式打开二进制文件*/
 	if (fp == NULL)
 	{
@@ -48,9 +55,9 @@ void dayinzhi()
 {
 	FILE* fp;
 	money Tm;
-	char Da[40], next;
+	char Da[40] = "a.txt", next;
 	printf("请输入你要查询的文件名\n");
-	gets(Da);
+	gets_s(Da, 40);
 	fp = fopen(Da, "rb");     /*只读方式打开二进制文件*/
 	if (fp == NULL)
 	{
@@ -83,7 +90,7 @@ void chaxunzhi()    /*按编号查询家庭成员财务支信息记录*/
 	FILE* fp = NULL;
 	/*提示用户输入要查询的文件名*/
 	printf("\n 请输入存储数据的文件名，按回车键结束。\n");
-	gets(Da);
+	//gets(Da);
 
 	/*提示用户输入要查询的家庭成员编号*/
 begin:
@@ -140,7 +147,9 @@ void chaxunshou()    /*按编号查询家庭成员财务收支信息记录*/
 	FILE* fp = NULL;
 	/*提示用户输入要查询的文件名*/
 	printf("\n 请输入存储数据的文件名，按回车键结束。\n");
-	gets(Da);
+	flush();
+	gets_s(Da, sizeof(Da));
+
 
 	/*提示用户输入要查询的家庭成员编号*/
 begin:
@@ -208,7 +217,7 @@ void xiugaizhi()     /*修改家庭成员收支信息记录*/
 	FILE* fp;   /*fp指针指向存储数据的文件名*/
 	/*输入要进行修改记录的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	gets(Da);
+	//gets(Da);
 
 begin:
 	fp = fopen(Da, "rb"); /*只读方式打开文件*/
@@ -368,7 +377,7 @@ void xiugaishou()     /*修改家庭成员收信息记录*/
 	FILE* fp;   /*fp指针指向存储数据的文件名*/
 	/*输入要进行修改记录的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	gets(Da);
+	//gets(Da);
 
 begin:
 	fp = fopen(Da, "rb"); /*只读方式打开文件*/
@@ -520,7 +529,7 @@ void shanchushou()    /*删除家庭成员收信息记录*/
 	char Da[40], next;
 	FILE* fp;      /*fp指针指向存储数据的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	gets(Da);
+	//gets(Da);
 
 begin:
 	/*以二进制读的方式打开文件*/
@@ -656,7 +665,7 @@ void shanchuzhi()    /*删除家庭成员支信息记录*/
 	char Da[40], next;
 	FILE* fp;      /*fp指针指向存储数据的文件名*/
 	printf("\n请输入存储数据的文件名，按回车键结束！\n");
-	gets(Da);
+	//gets(Da);
 
 begin:
 	/*以二进制读的方式打开文件*/
@@ -790,11 +799,11 @@ void tianjiashou()     /*添加财务收信息记录*/
 {
 	FILE* fp = NULL;      /*定义指向文件的指针*/
 	money Tm, ch;          /*定义进行操作时的临时结构体变量*/
-	char Da[40], next;     /*存储财务收支信息的文件名*/
+	char Da[40] = "a.txt", next;     /*存储财务收支信息的文件名*/
 	int count = 1;          /*计算可输入数据的最大范围*/
 	printf("\n 请输入要添加财务收支信息的文件名：");
-	gets(Da);
-
+	flush();
+	gets_s(Da, sizeof(Da));
 
 begin:count = 1;
 	fp = fopen(Da, "ab+");
@@ -878,7 +887,7 @@ void tianjiaszhi()     /*添加财务支信息记录*/
 	char Da[40], next;     /*存储财务收支信息的文件名*/
 	int count = 1;          /*计算可输入数据的最大范围*/
 	printf("\n 请输入要添加财务收支信息的文件名：");
-	gets(Da);
+	//gets(Da);
 
 
 begin:count = 1;
@@ -988,8 +997,11 @@ void income_guanli()    //收入管理
 
 
 		printf("请输入选择:");
+		fflush(stdin);
+
 		scanf("%d", &choice);
 		fflush(stdin);
+		printf("choice=%d\n", choice);
 		if (choice == 0) {
 			break;
 		}
@@ -1025,6 +1037,7 @@ void zhichu_guanli()    //支出管理
 
 		printf("请输入选择:");
 		scanf("%d", &choice);
+		getchar();
 		fflush(stdin);
 		if (choice == 0) {
 			break;
